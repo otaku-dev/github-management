@@ -1,5 +1,7 @@
 # GitHub management with Terraform
 
+[![CircleCI](https://circleci.com/gh/otaku-dev/github-management.svg?style=svg)](https://circleci.com/gh/otaku-dev/github-management)
+
 ## Getting Started
 
 ### Prerequisites
