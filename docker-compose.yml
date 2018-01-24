@@ -1,8 +1,0 @@
-version: '3'
-services:
-  terraform:
-    image: "hashicorp/terraform:light"
-    volumes:
-     - .:/code
-    working_dir: /code
-    env_file: .env
