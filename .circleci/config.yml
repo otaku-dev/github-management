@@ -3,9 +3,6 @@ jobs:
   terraform_plan:
     docker:
       - image: debian:stretch
-    branches:
-      ignore:
-        - master
     steps:
       - checkout
       - run:
@@ -14,11 +11,21 @@ jobs:
   terraform_apply:
     docker:
       - image: debian:stretch
-    branches:
-      only:
-        - master
     steps:
       - checkout
       - run:
           name: Apply
           command: echo Apply
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - terraform_plan:
+          filters:
+            branches:
+              ignore: master
+      - terraform_apply:
+          filters:
+            branches:
+              only: master  
