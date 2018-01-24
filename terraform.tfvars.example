@@ -1,2 +1,2 @@
-github_token = "INPUT_PERSONAL_ACCESS_TOKEN"
+github_token = "GITHUB_TOKEN"
 github_organization = "otaku-dev"
