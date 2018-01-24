@@ -12,7 +12,6 @@ resource "github_branch_protection" "github-management" {
 
   required_status_checks {
     strict = true
-    contexts = ["ci/circleci"]
   }
 
   required_pull_request_reviews {
