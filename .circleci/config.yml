@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  terraform_plan:
+  terraform-plan:
     docker:
       - image: debian:stretch
     steps:
@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Plan
           command: echo Plan
-  terraform_apply:
+  terraform-apply:
     docker:
       - image: debian:stretch
     steps:
@@ -19,13 +19,13 @@ jobs:
 
 workflows:
   version: 2
-  deploy:
+  build-deploy:
     jobs:
-      - terraform_plan:
+      - terraform-plan:
           filters:
             branches:
               ignore: master
-      - terraform_apply:
+      - terraform-apply:
           filters:
             branches:
               only: master  
