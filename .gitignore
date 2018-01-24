@@ -7,3 +7,4 @@
 
 # Variable values
 terraform.tfvars
+.env
