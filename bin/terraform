@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -eu
+
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+
+cd $SCRIPT_DIR/../
+
+docker run --env-file .env -i -t -v $(pwd):/code/ -w /code/ hashicorp/terraform:light $@
