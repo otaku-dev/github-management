@@ -5,3 +5,9 @@ resource "github_repository" "otacop" {
   has_wiki = true
   has_downloads = true
 }
+
+resource "github_team_repository" "otacop" {
+  team_id    = "${github_team.members.id}"
+  repository = "${github_repository.otacop.name}"
+  permission = "push"
+}
