@@ -11,7 +11,7 @@ resource "github_repository" "akibago" {
 resource "github_team_repository" "akibago_repo" {
   team_id    = "${github_team.akibago.id}"
   repository = "${github_repository.akibago.name}"
-  permission = "pull"
+  permission = "push"
 }
 
 resource "github_team_membership" "member" {
