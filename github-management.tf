@@ -1,7 +1,7 @@
 resource "github_repository" "github-management" {
   name = "github-management"
   has_issues = true
-  has_wiki = true
+  has_wiki = false
   has_downloads = true
 }
 
