@@ -1,29 +1,45 @@
-version: 2
-jobs:
-  terraform-plan:
-    docker:
-      - image: hashicorp/terraform:light
-    steps:
-      - checkout
-      - run: terraform init
-      - run: terraform plan
-  terraform-apply:
-    docker:
-      - image: hashicorp/terraform:light
-    steps:
-      - checkout
-      - run: terraform init
-      - run: terraform apply -auto-approve
+# version: 2
+# jobs:
+#   terraform-plan:
+#     docker:
+#       - image: hashicorp/terraform:light
+#     steps:
+#       - checkout
+#       - run: terraform init
+#       - run: terraform plan
+#   terraform-apply:
+#     docker:
+#       - image: hashicorp/terraform:light
+#     steps:
+#       - checkout
+#       - run: terraform init
+#       - run: terraform apply -auto-approve
+#
+# workflows:
+#   version: 2
+#   build-deploy:
+#     jobs:
+#       - terraform-plan:
+#           filters:
+#             branches:
+#               ignore: master
+#       - terraform-apply:
+#           filters:
+#             branches:
+#               only: master
 
+# Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
+version: 2.1
+
+# Use a package of configuration called an orb, see https://circleci.com/docs/2.0/orb-intro/
+orbs:
+  # Declare a dependency on the welcome-orb
+  welcome: circleci/welcome-orb@0.3.1
+
+# Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
 workflows:
-  version: 2
-  build-deploy:
+  # Name the workflow "Welcome"
+  Welcome:
+    # Run the welcome/run job in its own container
     jobs:
-      - terraform-plan:
-          filters:
-            branches:
-              ignore: master
-      - terraform-apply:
-          filters:
-            branches:
-              only: master  
+      - welcome/run
